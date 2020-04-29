@@ -11,8 +11,7 @@ from django.views.generic import (TemplateView,ListView,
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AboutView(TemplateView):
-    template_name = 'about.html'
+
 
 class PostListView(ListView):
     model = Post
@@ -76,7 +75,7 @@ def add_comment_to_post(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, 'blog/comment.html', {'form': form})
+    return render(request, 'blog/comment_form.html', {'form': form})
 
 
 @login_required
