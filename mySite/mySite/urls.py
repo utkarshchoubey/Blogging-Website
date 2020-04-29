@@ -18,9 +18,11 @@ from django.urls import path
 from django.conf.urls import include
 from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth import views as views
+
+app_name='blog'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('blog.urls','blog')),
+    path('',include('blog.urls',namespace="blog")),
     path('accounts/login',views.LoginView.as_view(),name='login'),
     path('accounts/logout',views.LogoutView.as_view(),name='logout',kwargs={'next_page':'/'}),
 
